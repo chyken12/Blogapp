@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+  <center>
+  
+    <h1>Search Result for {{searched}}</h1>
+    <br>
+    {% for post in posts %}
+      {{ post.title }}
+    {% endfor %}
+ 
+    
+
+    
+  </center>
+
+{% endblock %}

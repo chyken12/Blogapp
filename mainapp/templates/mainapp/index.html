@@ -1,0 +1,71 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+    <main>
+        <div class="container">
+            <div class="row">
+
+                <!-- blog-contents -->
+                <section class="col-md-8">
+                    {% for post in page_number %}
+                    <article class="blog-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="{{ post.get_absolute_url }}">
+                                    <img src="{{ post.header_image.url }}" class="img-thumbnail center-block" alt="Blog Post Thumbnail">
+                                </a>
+                            </div>
+                            <div class="col-md-9">
+                               
+                                <h1>
+                                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                                </h1>
+                                <p>
+                                     {{ post.subject }}
+                                </p>
+                                <br>
+                                <a href="#">
+                                    <p>
+                                        post By 
+                                        <a href="#">{{ post.author }}</a>
+                                        ,
+                                        <time>23-july-2015<time>
+                                    </p>                            </div>
+                        </div>
+                    </article> 
+                    {% endfor %}
+
+
+                <div class="page-turn">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3 text-center">
+                                <nav>
+                                    <ul class="pagination pagination-sm">
+                                        <li class="disabled">
+                                            <a href="#" aria-label="Previous">
+                                                <span aria-hidden="true">Prev</span>
+                                            </a>
+                                        </li>
+                                        <li class="active"><a href="index.html">1</a></li>
+                                        <li><a href="page2.html">2</a></li>
+                                        <li><a href="page3.html">3</a></li>
+                                        <li><a href="page4.html">4</a></li>
+                                        <li><a href="page5.html">5</a></li>
+                                        <li>
+                                            <a href="page6.html" aria-label="Next">
+                                                <span aria-hidden="true">Next</span>
+                                            </a>
+                                        </li>
+                                    </ul> <!-- /.pagination -->
+                                </nav>
+                            </div>
+                        </div>
+                    </div> <!-- /.page-turn -->
+
+                </section>
+{% endblock %}               <!-- end of blog-contents -->
+</body>
+</html>

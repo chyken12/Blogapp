@@ -1,0 +1,63 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h3>
+            <a href="{{ post.get_absolute_url }}">{{ post.title|title }} </a>
+        </h3>
+    <div class="main-content">
+        <p>{{ post.content }}</p>
+    </div>
+
+        <ul class="#">
+                {% for comment in comments %}
+            <div class="card">
+                <p class="card-text">{{ comment.message|linebreaks }}</p>
+                <br>
+               <p class="card-text"><strong> Comment By </strong>{{comment.name}}</p>
+            </div>
+                {% empty %}
+                <p>There are no comments for this post.</p>
+                {% endfor %}
+                <h2>Leave a new comment</h2>
+            
+
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Enter Name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Enter Email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" placeholder="Type your comment here..." id=""
+                                cols="30" rows="10" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                        </div>
+
+
+                    </form>
+
+                </div>
+            </div>
+
+        </ul>
+
+
+
+    </div>
+</div>
+<script>
+    $('#myForm').trigger("reset");
+</script>
+{% endblock %}
