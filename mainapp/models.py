@@ -71,15 +71,15 @@ class Post(models.Model):
 
 
 
-class Subscribers(models.Model):
-    email = models.EmailField()
+# class Subscribers(models.Model):
+#     email = models.EmailField()
     
-    def __str__(self):
+#     def __str__(self):
         
-        return self.email
+#         return self.email
     
-    class Meta:
-        verbose_name_plural = 'Subsrcibers'
+#     class Meta:
+#         verbose_name_plural = 'Subsrcibers'
 
 
 

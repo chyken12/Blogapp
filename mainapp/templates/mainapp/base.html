@@ -13,8 +13,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         
-
-        <title>Pen's Point </title>
+        
+            <title >Pen's Point </title>
+        
+       
         
         <!-- stylesheets -->
         <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" type="text/css" >
@@ -82,7 +84,7 @@
                                     {% for post in recent_posts %}
                                     <li>  
                                     <img src="{{ post.header_image.url }}" alt="{{ post.title }}" style="float:left; width:80px; height:80px; margin-right:10px">
-                                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                                    <a href="{{ post.get_absolute_url }}">{{ post.title|safe }}</a>
                                     </li>
                                     
                                     {% endfor %}
@@ -113,7 +115,7 @@
                 <div class="row">
                     <!-- copyright -->
                     <div class="col-md-4 col-sm-4">
-                        copyright &copy; 2023 <a href="#" style="margin-left: 4px;">samsarp</a>
+                        copyright &copy; 2023 <a href="#" style="margin-left: 4px;">Pen's Point</a>
                     </div>
 
                     <!-- footer share button -->

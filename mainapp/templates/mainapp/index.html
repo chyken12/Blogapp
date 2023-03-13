@@ -19,10 +19,12 @@
                                 </a>
                             </div>
                             <div class="col-md-9">
-                               
+                               <div class="post-title">
                                 <h1>
                                     <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
                                 </h1>
+                               </div>
+                              
                                 <p>
                                      {{ post.subject }}
                                 </p>
@@ -32,7 +34,7 @@
                                         post By 
                                         <a href="#">{{ post.author }}</a>
                                         ,
-                                        <time>23-july-2015<time>
+                                        <time>{{ post.date }}<time>
                                     </p>                            </div>
                         </div>
                     </article> 
@@ -44,20 +46,24 @@
                             <div class="col-md-6 col-md-offset-3 text-center">
                                 <nav>
                                     <ul class="pagination pagination-sm">
-                                        <li class="disabled">
-                                            <a href="#" aria-label="Previous">
+                                        <li class="#">
+                                            {% if page_number.has_previous %}
+                                            <a href="?page={{ page_number.previous_page_number }}" aria-label="Previous">
                                                 <span aria-hidden="true">Prev</span>
                                             </a>
+                                            {% endif %}
                                         </li>
-                                        <li class="active"><a href="index.html">1</a></li>
-                                        <li><a href="page2.html">2</a></li>
-                                        <li><a href="page3.html">3</a></li>
-                                        <li><a href="page4.html">4</a></li>
-                                        <li><a href="page5.html">5</a></li>
+                                        <li class="active"><a href="?page=1">1</a></li>
+                                        <li><a href="?page=2">2</a></li>
+                                        <li><a href="?page=3">3</a></li>
+                                        <li><a href="?page=4">4</a></li>
+                                        <li><a href="?page=5">5</a></li>
                                         <li>
-                                            <a href="page6.html" aria-label="Next">
+                                            {% if page_number.has_next %}
+                                            <a href="?page={{ page_number.next_page_number }}" aria-label="Next">
                                                 <span aria-hidden="true">Next</span>
                                             </a>
+                                            {% endif %}
                                         </li>
                                     </ul> <!-- /.pagination -->
                                 </nav>

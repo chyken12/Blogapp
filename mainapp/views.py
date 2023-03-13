@@ -6,7 +6,7 @@ from turtle import title
 from django.shortcuts import redirect, render
 from django.contrib import messages
 
-from mainapp.forms import CommentForm, NewsletterForm,SubscribersForm
+from mainapp.forms import CommentForm, NewsletterForm
 from .models import Newsletter,Post,Subscribers
 from django.shortcuts import render,get_object_or_404, HttpResponseRedirect
 from django.views.generic import ListView
@@ -39,7 +39,7 @@ def index(request):
         posts = Post.objects.filter(Q(title__icontains=search_post)| Q(content__icontains=search_post))
     else:
         posts = Post.objects.all()
-        recent_posts = Post.objects.order_by('-date')[:5]
+        recent_posts = Post.objects.order_by('-date')[:4]
         # pagination for posts
         p = Paginator( Post.objects.all(), 8)
         page =request.GET.get('page')
